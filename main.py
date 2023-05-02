@@ -102,8 +102,11 @@ class Cell:
 
 def main():
     win = Window(800, 600)
-    cell = Cell(True, False, True, True, 10, 100, 50, 100, win)
-    cell.draw()
+    cell_one = Cell(True, False, True, True, 10, 100, 50, 100, win)
+    cell_one.draw()
+
+    cell_two = Cell(False, True, True, True, 300, 500, 200, 400, win)
+    cell_two.draw()
     win.wait_for_close()
 
 
