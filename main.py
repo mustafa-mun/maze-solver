@@ -99,6 +99,25 @@ class Cell:
             self.has_top_wall, Point(self.__x1, self.__y2), Point(self.__x2, self.__y2)
         )
 
+    def draw_move(self, to_cell, undo=False):
+        color = None
+        if undo:
+            color = "gray"
+        else:
+            color = "red"
+
+        center_one_x = (self.__x1 + self.__x2) / 2
+        center_one_y = (self.__y1 + self.__y2) / 2
+
+        center_two_x = (to_cell.__x1 + to_cell.__x2) / 2
+        center_two_y = (to_cell.__y1 + to_cell.__y2) / 2
+
+        point_one = Point(center_one_x, center_one_y)
+        point_two = Point(center_two_x, center_two_y)
+
+        line = Line(point_one, point_two)
+        self.__win.draw_line(line, color)
+
 
 def main():
     win = Window(800, 600)
@@ -107,6 +126,13 @@ def main():
 
     cell_two = Cell(False, True, True, True, 300, 500, 200, 400, win)
     cell_two.draw()
+
+    cell_three = Cell(True, True, False, True, 200, 400, 50, 150, win)
+    cell_three.draw()
+
+    cell_one.draw_move(cell_two)
+    cell_three.draw_move(cell_one)
+    cell_three.draw_move(cell_two)
     win.wait_for_close()
 
 
