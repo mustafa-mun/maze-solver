@@ -33,16 +33,11 @@ class Maze:
         self.__animate()
 
     def __create_cells(self):
-        cell_list = []
-        # populate cell_list
-        for i in range(9):
-            cell_list.append(Cell(self.__win))
-
         # create 2d cell list
-        for i in range(self.__num_cols + 1):
+        for i in range(self.__num_cols):
             list = []
-            for j in range(self.__num_rows + 1):
-                list.append(cell_list[j])
+            for j in range(self.__num_rows):
+                list.append(Cell(self.__win))
             self.__cells.append(list)
 
         # draw cells
