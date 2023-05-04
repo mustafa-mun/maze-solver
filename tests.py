@@ -41,6 +41,16 @@ class Tests(unittest.TestCase):
         last_column = m1._cells[len(m1._cells) - 1]
         self.assertEqual(last_column[len(last_column) - 1].has_bottom_wall, False)
 
+    def test_reset_cell_visit(self):
+        m1 = Maze(20, 20, 10, 10, 50, 50)
+        is_all_resetted = True
+
+        for col in m1._cells:
+            for cell in col:
+                if cell.visited == True:
+                    is_all_resetted = False
+                    
+        self.assertEqual(is_all_resetted, True)
 
 if __name__ == "__main__":
     unittest.main()
